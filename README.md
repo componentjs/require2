@@ -1,6 +1,6 @@
 # Component Require
 
-[builder2](https://github.com/component/builder2.js)'s `require` implementation. In a separate repo so it doesn't get regenerated during the buidl.
+[builder2](https://github.com/component/builder2.js)'s `require` implementation. In a separate repo so it doesn't get regenerated during the build.
 
 ## License
 
