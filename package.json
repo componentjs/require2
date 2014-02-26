@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jonathanong/component-require2.git"
+    "url": "https://github.com/component/require2.git"
   },
   "bugs": {
-    "url": "https://github.com/jonathanong/component-require2/issues",
+    "url": "https://github.com/component/require2/issues",
     "email": "me@jongleberry.com"
   },
   "license": "MIT"
