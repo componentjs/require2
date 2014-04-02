@@ -8,13 +8,6 @@
     "url": "http://jongleberry.com",
     "twitter": "https://twitter.com/jongleberry"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/component/require2.git"
-  },
-  "bugs": {
-    "url": "https://github.com/component/require2/issues",
-    "email": "me@jongleberry.com"
-  },
+  "repository": "component/require2",
   "license": "MIT"
 }
