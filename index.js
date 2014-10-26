@@ -38,9 +38,9 @@ require.helper.semVerSort = function(a, b) {
     if (aInt === bInt) {
       var aLex = v1Array[i].substr((""+aInt).length);
       var bLex = v2Array[i].substr((""+bInt).length);
-      if (aLex !== '' || bLex !== '') {
-        return aLex > bLex ? 1 : -1;
-      }
+      if (aLex === '' && bLex !== '') return 1;
+      if (aLex !== '' && bLex === '') return -1;
+      if (aLex !== '' && bLex !== '') return aLex > bLex ? 1 : -1;
       continue;
     } else if (aInt > bInt) {
       return 1;
