@@ -1,3 +1,8 @@
+1.1.0 / 2014-10-28
+
+* fix `require.latest` semantic versioning sort order
+* add tests
+
 1.0.2 / 2014-10-12
 ==================
 
