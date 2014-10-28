@@ -21,32 +21,58 @@ describe('require', function() {
     vm.runInContext(js, ctx);
     var sortingFn = vm.runInContext('require.helper.semVerSort', ctx);
     var test = [
-      '2.0.0',
-      '0.0.0',
-      '1.0.11',
-      '1.1.0',
-      '1.0.0-beta',
-      '1.0.2',
-      '1.0.0',
-      '1.2.1',
-      '1.0.0-rc1'
+      {name: 1, version: '2.0.0'},
+      {name: 2, version: '0.0.0'},
+      {name: 3, version: '1.0.11'},
+      {name: 4, version: '1.1.0'},
+      {name: 5, version: '1.0.0-beta'},
+      {name: 6, version: '1.0.2'},
+      {name: 7, version: '1.0.0'},
+      {name: 8, version: '1.2.1'},
+      {name: 9, version: '1.0.0-rc1'},
     ];
     var expected = [
-      '0.0.0',
-      '1.0.0-beta',
-      '1.0.0-rc1',
-      '1.0.0',
-      '1.0.2',
-      '1.0.11',
-      '1.1.0',
-      '1.2.1',
-      '2.0.0'
+      {name: 2, version: '0.0.0'},
+      {name: 5, version: '1.0.0-beta'},
+      {name: 9, version: '1.0.0-rc1'},
+      {name: 7, version: '1.0.0'},
+      {name: 6, version: '1.0.2'},
+      {name: 3, version: '1.0.11'},
+      {name: 4, version: '1.1.0'},
+      {name: 8, version: '1.2.1'},
+      {name: 1, version: '2.0.0'}
     ];
-    test = test.map(function(i){return {name: i, version: i}});
-    expected = expected.map(function(i){return {name: i, version: i}})
+  
     var result = test.sort(sortingFn);
     assert.deepEqual(result, expected);
   })
+
+  it('should not sort same versions', function() {
+    var ctx = vm.createContext();
+    vm.runInContext(js, ctx);
+    var sortingFn = vm.runInContext('require.helper.semVerSort', ctx);
+
+    var test = [
+      {name: 11, version: '1.0.0-rc1'},
+      {name: 10, version: '1.0.0-rc1'},
+      {name: 9, version: '1.0.0-rc1'},
+      {name: 5, version: '1.0.0-beta'},
+      {name: 12, version: '1.0.0-rc1'},
+      {name: 13, version: '1.0.0-rc1'}
+    ];
+    var expected = [
+      {name: 5, version: '1.0.0-beta'},
+      {name: 11, version: '1.0.0-rc1'},
+      {name: 10, version: '1.0.0-rc1'},
+      {name: 9, version: '1.0.0-rc1'},
+      {name: 12, version: '1.0.0-rc1'},
+      {name: 13, version: '1.0.0-rc1'}
+    ];
+
+    var result = test.sort(sortingFn);
+    assert.deepEqual(result, expected);
+  
+  });
 
   it('should return latest semantic version of a module', function () {
     var ctx = vm.createContext();
