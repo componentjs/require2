@@ -30,14 +30,14 @@ require.loader = 'component';
  */
 require.helper = {};
 require.helper.semVerSort = function(a, b) {
-  var v1Array = a.version.split('.');
-  var v2Array = b.version.split('.');
-  for (var i=0; i<v1Array.length; ++i) {
-    var aInt = parseInt(v1Array[i], 10);
-    var bInt = parseInt(v2Array[i], 10);
+  var aArray = a.version.split('.');
+  var bArray = b.version.split('.');
+  for (var i=0; i<aArray.length; ++i) {
+    var aInt = parseInt(aArray[i], 10);
+    var bInt = parseInt(bArray[i], 10);
     if (aInt === bInt) {
-      var aLex = v1Array[i].substr((""+aInt).length);
-      var bLex = v2Array[i].substr((""+bInt).length);
+      var aLex = aArray[i].substr((""+aInt).length);
+      var bLex = bArray[i].substr((""+bInt).length);
       if (aLex === '' && bLex !== '') return 1;
       if (aLex !== '' && bLex === '') return -1;
       if (aLex !== '' && bLex !== '') return aLex > bLex ? 1 : -1;
